@@ -1,9 +1,9 @@
 public class ParkingLotOwner implements ParkingLotObserver {
-    private boolean isFullCapacity;
+    private boolean isFullCapacity;//=false;
 
     @Override
-    public void capacityIsFull(){
-        isFullCapacity=true;
+    public void capacityIsFull() {
+        isFullCapacity = true;
     }
 
     public boolean isCapacityFull() {
@@ -12,11 +12,11 @@ public class ParkingLotOwner implements ParkingLotObserver {
 
     @Override
     public void capacityIsAvailable() {
-        isFullCapacity=false;
+        isFullCapacity = false;
     }
 
 
     public boolean isEmpty() {
-        return  true;
+        return true;
     }
 }
