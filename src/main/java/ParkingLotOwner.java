@@ -14,4 +14,9 @@ public class ParkingLotOwner implements ParkingLotObserver {
     public void capacityIsAvailable() {
         isFullCapacity=false;
     }
+
+
+    public boolean isEmpty() {
+        return  true;
+    }
 }
