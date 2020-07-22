@@ -1,4 +1,7 @@
+package com.parking.parkinglot;
+
 import com.parkinglot.exception.ParkingLotException;
+import parkinglotstrategy.Slot;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -9,10 +12,11 @@ import java.util.stream.IntStream;
 public class ParkingLot {
     Map<Integer, ParkingSlot> vehicleSlotMap;
     List<Integer> unOccupiedSlotList;
+    public List<Slot> slots;
 
     ParkingLot(Integer parkingLotSize) {
         vehicleSlotMap = new HashMap<>();
-        unOccupiedSlotList = new ArrayList<>();
+        unOccupiedSlotList = new ArrayList<Integer>();
         IntStream.range(0, parkingLotSize).forEach(slotNumber -> this.unOccupiedSlotList.add(slotNumber));
     }
 
@@ -39,5 +43,31 @@ public class ParkingLot {
         }
 
         return position;
+    }
+
+    private Slot getSlot(Object vehicle) throws ParkingLotException {
+
+        Slot vehicleSlot = slots.stream()
+                .filter(slot -> slot.getVehicle() != null && slot.getVehicle().equals(vehicle))
+                .findFirst()
+                .orElseThrow(() -> new ParkingLotException(ParkingLotException.ExceptionType.VEHICLE_NOT_FOUND, "vehicle not found"));
+        return vehicleSlot;
+    }
+
+    public boolean isVehiclePresent(Object vehicle) {
+        try {
+            return getSlot(vehicle).getVehicle().equals(vehicle);
+        } catch (ParkingLotException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public List getEmptySlots() {
+        List emptySlots = new ArrayList();
+        IntStream.range(0, slots.size()).filter(slot -> this.slots.get(slot).getVehicle() == null).forEach(slots -> {
+            emptySlots.add(slots);
+        });
+        return emptySlots;
     }
 }

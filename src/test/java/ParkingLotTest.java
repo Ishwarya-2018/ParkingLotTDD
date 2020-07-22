@@ -1,7 +1,12 @@
+import com.parking.parkinglot.AirportSecurity;
+import com.parking.parkinglot.ParkingLot;
+import com.parking.parkinglot.ParkingLotOwner;
+import com.parking.parkinglot.ParkingLotSystem;
 import com.parkinglot.exception.ParkingLotException;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import parkinglotstrategy.DriverType;
 
 public class ParkingLotTest {
     ParkingLotSystem parkingLotSystem = null;
@@ -173,6 +178,20 @@ public class ParkingLotTest {
             Assert.assertEquals((Integer) 1, pos4);
         } catch (ParkingLotException e) {
             e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void givenVehicleWithHandicappedDriver_ShouldParkVehicleAtNearestFreeSpace() {
+        try {
+            ParkingLotSystem parkingLotSystem = new ParkingLotSystem(2, 2);
+            Object vehicle = new Object();
+            parkingLotSystem.parkVehicle(DriverType.HANDICAP, vehicle);
+            Object vehicle2 = new Object();
+            parkingLotSystem.parkVehicle(DriverType.HANDICAP, vehicle2);
+            ParkingLot parkedVehicleLot = parkingLotSystem.getParkedVehicleLot(vehicle2);
+            Assert.assertEquals(parkingLotSystem.parkingLotsList.get(0), parkedVehicleLot);
+        } catch (ParkingLotException e) {
         }
     }
 }

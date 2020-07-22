@@ -1,3 +1,5 @@
+package com.parking.parkinglot;
+
 import java.util.Objects;
 
 public class ParkingSlot {

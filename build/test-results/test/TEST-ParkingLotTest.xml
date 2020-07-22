@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ParkingLotTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-07-21T18:10:10" hostname="SMART-PC" time="0.043">
+<testsuite name="ParkingLotTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-07-22T16:22:59" hostname="SMART-PC" time="0.23">
   <properties/>
-  <testcase name="givenMultipleParkingLots_ifVehicleComes_ShouldUseEvenDistributionForParking" classname="ParkingLotTest" time="0.043"/>
+  <testcase name="givenMultipleParkingLots_ifVehicleComes_ShouldUseEvenDistributionForParking" classname="ParkingLotTest" time="0.23"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
